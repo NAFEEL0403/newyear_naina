@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year</title>
+
+    <style>
+        body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    text-align: center;
+
+    background: linear-gradient(
+        270deg,
+        #ff0080,
+        #ff8c00,
+        #40e0d0,
+        #7fff00,
+        #8a2be2
+    );
+    background-size: 1000% 1000%;
+    animation: gradientMove 6s ease infinite;
+}
+
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+        h1 {
+            margin: 10px 0;
+        }
+
+        input {
+            width: 80%;
+            max-width: 300px;
+            height: 40px;
+            font-size: 16px;
+            padding: 5px 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 12px 30px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: purple;
+        }
+
+        
+        #inputSection {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+        #wishSection {
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black;   
+            color: white;              
+        }
+
+        img {
+            width: 90%;
+            max-width: 400px;
+            margin: 20px 0;
+            border:none;
+            outline:none;
+            box-shadow:none;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.4);
+        }
+        .bg-image {
+        width: 100%;
+        max-width: 500px;
+        height: 280px;
+
+        background-image: url("newyear.gif"); 
+        background-size: contain;  
+        background-repeat: no-repeat;
+        background-position: center;
+
+        margin: 20px 0;
+       }
+
+    </style>
+</head>
+
+<body>
+
+   
+    <div id="inputSection">
+        <h1>Enter Your Name</h1>
+        <input id="nameInput" type="text" placeholder="Your Name">
+        <button onclick="showWish()">CLICK HERE</button>
+    </div>
+
+    
+    <div id="wishSection">
+        <h1>HAPPY NEW YEAR </h1>
+        <div class="bg-image"></div>
+
+        <h1>HAPPY NEW YEAR MY FRIEND</h1>
+        <h1 id="userWish"></h1>
+        <h1> BY NAFEEL</h1>
+    </div>
+
+    <audio id="audio" hidden>
+        <source src="newyear.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        
+        const colors = ["#ffeb3b", "#ff9800", "#4caf50", "#03a9f4", "#e91e63"];
+        let i = 0;
+
+        setInterval(() => {
+            if (document.getElementById("inputSection").style.display !== "none") {
+                document.body.style.backgroundColor = colors[i];
+                i = (i + 1) % colors.length;
+            }
+        }, 2000);
+
+        function showWish() {
+            const name = document.getElementById("nameInput").value;
+            if (name === "") return;
+
+            document.getElementById("inputSection").style.display = "none";
+            document.getElementById("wishSection").style.display = "flex";
+            document.body.style.backgroundColor = "black";
+
+            document.getElementById("userWish").textContent = name + " ";
+            document.getElementById("audio").play();
+        }
+    </script>
+
+</body>
+</html>
